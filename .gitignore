@@ -1,0 +1,13 @@
+logs
+dump
+backup
+*.log
+npm-debug.log*
+.grunt
+node_modules
+.npm
+config.js
+app.css
+LICENCE
+README.md
+.sass-cache
