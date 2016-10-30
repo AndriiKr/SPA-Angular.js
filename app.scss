@@ -1,0 +1,91 @@
+// Mixins
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}
+
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    padding: 0;
+    margin: 0;
+
+    @include flexbox;
+
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.wrapper > * {
+    @include flex(1 100%);
+}
+
+.block {
+    height: 100vh;
+}
+
+.block1 {
+    background: blue url("templates/cut_images/image_part_001.png") no-repeat right top;
+    background-size: 100% 100%;
+}
+
+.block2 {
+    background: yellow url("templates/cut_images/image_part_003.png") no-repeat right top;
+    background-size: 100% 100%;
+}
+
+.block3 {
+    background: black url("templates/cut_images/image_part_002.png") no-repeat right top;
+    background-size: 100% 100%;
+}
+
+.block4 {
+    background: red url("templates/cut_images/image_part_004.png") no-repeat right top;
+    background-size: 100% 100%;
+}
+
+@media all and (min-width: 640px) {
+    .block {
+        @include flex(1 50%);
+
+        height: 50vh;
+    }
+
+    .block1 {
+        @include order(1);
+    }
+
+    .block2 {
+        @include order(3);
+    }
+
+    .block3 {
+        @include order(2);
+    }
+
+    .block4 {
+        @include order(4);
+    }
+}
