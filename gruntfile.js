@@ -13,12 +13,6 @@ module.exports = function(grunt) {
         },
         sass: { 
             dist: {
-                options: {
-                    style: 'compressed',
-                    trace: true,
-                    check: true,
-                    quiet: false
-                },
                 files: {
                     'app.css': 'app.scss',
                 }

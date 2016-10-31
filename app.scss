@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
+$block-height-desk: 50vh;
+$block-width-desk: 50%;
+
 // Mixins
 @mixin flexbox {
     display: -webkit-box;
@@ -23,19 +27,27 @@
     order: $val;
 }
 
+@mixin transform($transforms) {
+       -moz-transform: $transforms;
+         -o-transform: $transforms;
+        -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+          transform: $transforms;
+}
+
 body {
     padding: 0;
     margin: 0;
+    background: #fdcb6f;
+    font-family: 'Roboto', sans-serif;
 }
 
 .wrapper {
     padding: 0;
     margin: 0;
-
     @include flexbox;
-
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .wrapper > * {
@@ -43,49 +55,55 @@ body {
 }
 
 .block {
-    height: 100vh;
+     height: 100vh;
+     @include flexbox;
+     
 }
 
-.block1 {
-    background: blue url("templates/cut_images/image_part_001.png") no-repeat right top;
-    background-size: 100% 100%;
+.form {
+background:  url(resources/background2.png) no-repeat;
+background-size: 100% 100vh;
+.search {
+@include transform(rotate(313deg));
+    align-self: flex-end;
+    padding-bottom: 50px;
+    font-size: 25px;
+    margin-left: 20px;
+    font-weight: 300;
+    color: white;
+}
 }
 
-.block2 {
-    background: yellow url("templates/cut_images/image_part_003.png") no-repeat right top;
-    background-size: 100% 100%;
+
+.list {
+background:  url(resources/background3.png) no-repeat;
+background-size: 100% 100vh;
 }
 
-.block3 {
-    background: black url("templates/cut_images/image_part_002.png") no-repeat right top;
-    background-size: 100% 100%;
+.poster {
+background:  url(resources/background.png) no-repeat;
+background-size: 100% 100vh;
 }
 
-.block4 {
-    background: red url("templates/cut_images/image_part_004.png") no-repeat right top;
-    background-size: 100% 100%;
+.descript {
+background:  url(resources/background3.png) no-repeat;
+background-size: 100% 100vh;
 }
 
 @media all and (min-width: 640px) {
-    .block {
-        @include flex(1 50%);
-
+    .block {@include flex(1 50%);
         height: 50vh;
-    }
-
-    .block1 {
-        @include order(1);
-    }
-
-    .block2 {
-        @include order(3);
-    }
-
-    .block3 {
-        @include order(2);
-    }
-
-    .block4 {
-        @include order(4);
-    }
+        background-size: 100% $block-height-desk;}
+    .form {@include order(1);
+        .search {
+    @include transform(rotate(332deg));
+    align-self: flex-end;
+    padding-bottom: 25px;
+    margin-left: 20px;
+}
+}
+    .list {@include order(3);}
+    .poster {@include order(2);}
+    .descript {@include order(4);}
+    
 }

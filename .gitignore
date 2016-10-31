@@ -8,6 +8,7 @@ node_modules
 .npm
 config.js
 app.css
+app.css.map
 README.md
 .sass-cache
 templates
