@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
 $block-height-desk: 50vh;
 $block-width-desk: 50%;
-
 // Mixins
 @mixin flexbox {
     display: -webkit-box;
@@ -28,11 +27,11 @@ $block-width-desk: 50%;
 }
 
 @mixin transform($transforms) {
-       -moz-transform: $transforms;
-         -o-transform: $transforms;
-        -ms-transform: $transforms;
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
     -webkit-transform: $transforms;
-          transform: $transforms;
+    transform: $transforms;
 }
 
 body {
@@ -40,6 +39,10 @@ body {
     margin: 0;
     background: #fdcb6f;
     font-family: 'Roboto', sans-serif;
+}
+
+div {
+    @include flexbox;
 }
 
 .wrapper {
@@ -55,55 +58,186 @@ body {
 }
 
 .block {
-     height: 100vh;
-     @include flexbox;
-     
+    height: 100vh;
+    @include flexbox;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .form {
-background:  url(resources/background2.png) no-repeat;
-background-size: 100% 100vh;
-.search {
-@include transform(rotate(313deg));
-    align-self: flex-end;
-    padding-bottom: 50px;
-    font-size: 25px;
-    margin-left: 20px;
-    font-weight: 300;
-    color: white;
+    background: url("http://i65.tinypic.com/2en7och.png") no-repeat;
+    background-size: 100% 100vh;
+    justify-content: space-between;
+    align-items: flex-end;
+    .search {
+        @include transform(rotate(313deg));
+        padding-bottom: 50px;
+        font-size: 25px;
+        margin-left: 20px;
+        font-weight: 300;
+        color: white;
+    }
+    .search-button {}
 }
-}
-
 
 .list {
-background:  url(resources/background3.png) no-repeat;
-background-size: 100% 100vh;
+    background: url("http://i63.tinypic.com/2cys7t3.png") no-repeat;
+    background-size: 100% 100vh;
+    align-items: center;
+    .list-items {
+        list-style-type: none;
+        text-align: center;
+        width: 85%;
+        height: 85%;
+
+        .active{
+            color: black;
+        }
+    }
+    li {
+        padding: 13px 0px;
+    }
+    .yellow-type {
+        background-color: #fdcb6f;
+        color: #00a4c8;
+    }
+    .blue-type {
+        background-color: #00a4c8;
+        color: #fdcb6f;
+    }
 }
 
 .poster {
-background:  url(resources/background.png) no-repeat;
-background-size: 100% 100vh;
+    background: url("http://i67.tinypic.com/264rgnk.png") no-repeat;
+    background-size: 100% 100vh;
+    .magazine {
+        margin: auto;
+        @include transform(rotate(45deg));
+        height: 300px;
+        width: 250px;
+    }
 }
 
 .descript {
-background:  url(resources/background3.png) no-repeat;
-background-size: 100% 100vh;
+    background: url("http://i63.tinypic.com/2cys7t3.png") no-repeat;
+    background-size: 100% 100vh;
+    align-items: center;
+    justify-content: center;
+    .content {
+        flex-direction: column;
+        .header {
+            color: white;
+            font-size: 30px;
+            text-transform: uppercase;
+            background-color: #ee5854;
+            padding: px;
+            padding: 0px 14px;
+        }
+        .body {
+            background-color: white;
+            padding: 8px;
+            width: 300px;
+        }
+    }
 }
 
-@media all and (min-width: 640px) {
-    .block {@include flex(1 50%);
+@media all and (min-width: 750px) {
+    .block {
+        @include flex(1 50%);
         height: 50vh;
-        background-size: 100% $block-height-desk;}
-    .form {@include order(1);
+        background-size: 100% $block-height-desk;
+    }
+    .form {
+        @include order(1);
         .search {
-    @include transform(rotate(332deg));
-    align-self: flex-end;
-    padding-bottom: 25px;
-    margin-left: 20px;
+            @include transform(rotate(332deg));
+            align-self: flex-end;
+            padding-bottom: 25px;
+            margin-left: 20px;
+        }
+    }
+    body > div > div.block.list > ul > li {
+        padding: 4.5px 0px;
+    }
+    .descript .content .header {
+        color: white;
+        font-size: 25px;
+        text-transform: uppercase;
+        background-color: #ee5854;
+        padding: px;
+        padding: 0px 62px;
+        height: 70px;
+        align-items: center;
+    }
+    .descript .content .body {
+        background-color: white;
+        padding: 8px;
+        width: 350px;
+    }
+    .poster .magazine {
+        height: 200px;
+        width: 150px;
+    }
+    .list {
+        @include order(3);
+    }
+    .poster {
+        @include order(2);
+    }
+    .descript {
+        @include order(4);
+    }
+    .search_form{
+    position: relative;
+    }
 }
+
+
+
+input[type="text"] {
+  height: 80px;
+  font-size: 25px;
+  font-weight: 100;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 3px;
+  padding-right: 60px;
+  width: 0px;
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  background: none;
+  z-index: 3;
+  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  cursor: pointer;
 }
-    .list {@include order(3);}
-    .poster {@include order(2);}
-    .descript {@include order(4);}
-    
+
+input[type="text"]:focus:hover {
+  border-bottom: 1px solid #BBB;
+}
+
+input[type="text"]:focus {
+  width: 250px;
+  z-index: 1;
+  border-bottom: 1px solid #BBB;
+  cursor: text;
+}
+
+input[type="submit"] {
+  height: 80px;
+  width: 80px;
+  background: url("http://i66.tinypic.com/2douoo.gif") center center no-repeat;
+  background-size: 80px 80px;
+  text-indent: -10000px;
+  border: none;
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  z-index: 2;
+  cursor: pointer;
+  transition: opacity .4s ease;
+}
+input[type="submit"]:hover {
+  opacity: 0.8;
 }
