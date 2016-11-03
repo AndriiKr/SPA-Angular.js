@@ -1,39 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
-$block-height-desk: 50vh;
-$block-width-desk: 50%;
-// Mixins
-@mixin flexbox {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-}
-
-@mixin flex($values) {
-    -webkit-box-flex: $values;
-    -moz-box-flex: $values;
-    -webkit-flex: $values;
-    -ms-flex: $values;
-    flex: $values;
-}
-
-@mixin order($val) {
-    -webkit-box-ordinal-group: $val;
-    -moz-box-ordinal-group: $val;
-    -ms-flex-order: $val;
-    -webkit-order: $val;
-    order: $val;
-}
-
-@mixin transform($transforms) {
-    -moz-transform: $transforms;
-    -o-transform: $transforms;
-    -ms-transform: $transforms;
-    -webkit-transform: $transforms;
-    transform: $transforms;
-}
-
 body {
     padding: 0;
     margin: 0;
@@ -42,30 +7,29 @@ body {
 }
 
 div {
-    @include flexbox;
+    display: flex;
 }
 
 .wrapper {
     padding: 0;
     margin: 0;
-    @include flexbox;
+    display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
 
 .wrapper > * {
-    @include flex(1 100%);
+    flex:1 100%;
 }
 
 .block {
     height: 100vh;
-    @include flexbox;
+    display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
-
 .form {
-    background: url(templates/1.png) no-repeat;
+    background: url("http://i68.tinypic.com/k12tli.png") no-repeat;
     background-size: 100% 100vh;
     justify-content: space-between;
     align-items: flex-end;
@@ -123,7 +87,7 @@ div {
         width: 85%;
         height: 85%;
         .active{
-            background: url(templates/icon-sviz.png) no-repeat left center;
+            background: url("http://i64.tinypic.com/20kbtvo.png") no-repeat left center;
             background-size: 25px 25px;
             a {
             color: white;
@@ -151,7 +115,7 @@ div {
     background-size: 100% 100vh;
     .magazine {
         margin: auto;
-        @include transform(rotate(45deg));
+        transform:rotate(45deg);
         height: 300px;
         width: 250px;
     }
@@ -164,6 +128,7 @@ div {
     justify-content: center;
     .content {
         flex-direction: column;
+        width: 90%;
         .header {
             color: white;
             font-size: 30px;
@@ -177,19 +142,18 @@ div {
         .body {
             background-color: white;
             padding: 8px;
-            width: 380px;
         }
     }
 }
 
 @media all and (min-width: 750px) {
     .block {
-        @include flex(1 50%);
+        flex:1 50%;
         height: 50vh;
         background-size: 100% 50vh;
     }
     .form {
-        @include order(1);
+        order: 1;
     .search_form {position: relative;}
     }
     body > div > div.block.list > ul > li {
@@ -201,13 +165,13 @@ div {
     .descript .content .body {
         background-color: white;
         padding: 8px;
-        width: 450px;
+        width: auto;
     }
     .poster .magazine {
         height: 200px;
         width: 150px;
     }
-    .list {@include order(3);}
-    .poster {@include order(2);}
-    .descript {@include order(4);}
+    .list { order:3;}
+    .poster { order:2;}
+    .descript { order:4;}
 }

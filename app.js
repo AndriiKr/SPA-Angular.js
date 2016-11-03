@@ -22,11 +22,6 @@
     $scope.activeItem = menuItem
  }
 
- $scope.data = {
-    model: null,
-    POSTERS
-   };
-
    $scope.task = function(taskItem){
     alert("Task item is "+taskItem);
   };
