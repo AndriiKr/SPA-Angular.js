@@ -65,19 +65,51 @@ div {
 }
 
 .form {
-    background: url("http://i65.tinypic.com/2en7och.png") no-repeat;
+    background: url(templates/1.png) no-repeat;
     background-size: 100% 100vh;
     justify-content: space-between;
     align-items: flex-end;
-    .search {
-        @include transform(rotate(313deg));
-        padding-bottom: 50px;
+
+    input[type="text"] {
+        height: 80px;
         font-size: 25px;
-        margin-left: 20px;
-        font-weight: 300;
+        font-weight: 100;
+        border: none;
+        outline: none;
         color: white;
+        padding-right: 60px;
+        width: 0px;
+        position: absolute;
+        bottom: 20px;
+        right: 0;
+        background: none;
+        z-index: 3;
+        transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+        cursor: pointer;
     }
-    .search-button {}
+    input[type="text"]:focus {
+        width: 250px;
+        z-index: 1;
+        border-bottom: 1px solid #BBB;
+        cursor: text;
+    }
+    input[type="submit"] {
+        height: 80px;
+        width: 80px;
+        background: url("http://i66.tinypic.com/2douoo.gif") center center no-repeat;
+        background-size: 80px 80px;
+        text-indent: -10000px;
+        border: none;
+        position: absolute;
+        bottom: 20px;
+        right: 10px;
+        z-index: 2;
+        cursor: pointer;
+        transition: opacity .4s ease;
+    }
+    input[type="submit"]:hover {
+        opacity: 0.8;
+    }
 }
 
 .list {
@@ -85,27 +117,34 @@ div {
     background-size: 100% 100vh;
     align-items: center;
     .list-items {
+        font-size: 14px;
         list-style-type: none;
         text-align: center;
         width: 85%;
         height: 85%;
-
         .active{
-            color: black;
+            background: url(templates/icon-sviz.png) no-repeat left center;
+            background-size: 25px 25px;
+            a {
+            color: white;
+            font-size: 20px;
         }
-    }
-    li {
-        padding: 13px 0px;
-    }
-    .yellow-type {
-        background-color: #fdcb6f;
+        }
+            .yellow-type {
+        background-color: #fdcb6f!important;
         color: #00a4c8;
     }
     .blue-type {
-        background-color: #00a4c8;
+        background-color: #00a4c8!important;
         color: #fdcb6f;
     }
 }
+    }
+    li {
+        padding: 13px 0px;
+        a {text-decoration: none;}
+    }
+
 
 .poster {
     background: url("http://i67.tinypic.com/264rgnk.png") no-repeat;
@@ -130,13 +169,15 @@ div {
             font-size: 30px;
             text-transform: uppercase;
             background-color: #ee5854;
-            padding: px;
-            padding: 0px 14px;
+            padding: 20px 0px;
+            #title{
+                margin: auto;
+            }
         }
         .body {
             background-color: white;
             padding: 8px;
-            width: 300px;
+            width: 380px;
         }
     }
 }
@@ -145,99 +186,28 @@ div {
     .block {
         @include flex(1 50%);
         height: 50vh;
-        background-size: 100% $block-height-desk;
+        background-size: 100% 50vh;
     }
     .form {
         @include order(1);
-        .search {
-            @include transform(rotate(332deg));
-            align-self: flex-end;
-            padding-bottom: 25px;
-            margin-left: 20px;
-        }
+    .search_form {position: relative;}
     }
     body > div > div.block.list > ul > li {
         padding: 4.5px 0px;
     }
     .descript .content .header {
-        color: white;
         font-size: 25px;
-        text-transform: uppercase;
-        background-color: #ee5854;
-        padding: px;
-        padding: 0px 62px;
-        height: 70px;
-        align-items: center;
     }
     .descript .content .body {
         background-color: white;
         padding: 8px;
-        width: 350px;
+        width: 450px;
     }
     .poster .magazine {
         height: 200px;
         width: 150px;
     }
-    .list {
-        @include order(3);
-    }
-    .poster {
-        @include order(2);
-    }
-    .descript {
-        @include order(4);
-    }
-    .search_form{
-    position: relative;
-    }
-}
-
-
-
-input[type="text"] {
-  height: 80px;
-  font-size: 25px;
-  font-weight: 100;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 3px;
-  padding-right: 60px;
-  width: 0px;
-  position: absolute;
-  bottom: 20px;
-  right: 0;
-  background: none;
-  z-index: 3;
-  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
-  cursor: pointer;
-}
-
-input[type="text"]:focus:hover {
-  border-bottom: 1px solid #BBB;
-}
-
-input[type="text"]:focus {
-  width: 250px;
-  z-index: 1;
-  border-bottom: 1px solid #BBB;
-  cursor: text;
-}
-
-input[type="submit"] {
-  height: 80px;
-  width: 80px;
-  background: url("http://i66.tinypic.com/2douoo.gif") center center no-repeat;
-  background-size: 80px 80px;
-  text-indent: -10000px;
-  border: none;
-  position: absolute;
-  bottom: 20px;
-  right: 10px;
-  z-index: 2;
-  cursor: pointer;
-  transition: opacity .4s ease;
-}
-input[type="submit"]:hover {
-  opacity: 0.8;
+    .list {@include order(3);}
+    .poster {@include order(2);}
+    .descript {@include order(4);}
 }

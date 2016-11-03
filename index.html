@@ -8,28 +8,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.min.js"></script>
 </head>
-
 <body>
     <div class="wrapper">
         <div class="block form">
-            <p class="search">Search...</p>
-    <form    class="search_form" action="" autocomplete="on">
-  <input  id="search" name="search" type="text" placeholder="Search..."><input id="search_submit" value="" type="submit">
-  </form>
+            <p></p>
+            <form class="search_form" action="" autocomplete="on">
+                <input ng-model="filter" id="search" name="search" type="text" placeholder="Search...">
+                <input id="search_submit" value="" type="submit">
+            </form>
         </div>
         <div class="block list">
-            <ul class="list-items" >
-                <li  ng-class='{active:$first}' ng-click="'active'" ng-repeat="item in posters | limitTo:quantity" ng-bind-html="item.title" ng-class-odd="'blue-type'" ng-class-even="'yellow-type'"></li>
+            <ul class="list-items">
+                <li  ng-click="setActive(item); taskTitle(item.title); taskDeskr(item.description); taskImg(item.image)" ng-repeat="item in posters | limitTo:quantity | orderBy:orderFunction | filter: (!!filter|| 'active')&&{title:filter}" ng-class-odd="'blue-type'" ng-class-even="'yellow-type'" ng-class="{active : activeItem === item}">
+                    <a   ng-class-odd="'blue-type'" ng-class-even="'yellow-type'" href="#" ng-bind-html="item.title"   ></a>
+                </li>
             </ul>
         </div>
         <div class="block poster">
-            <img src="resources/images/grand_tour.jpg" alt="magazine" class="magazine">
+            <img id="image" src="resources/images/grand_tour.jpg" alt="magazine" class="magazine">
         </div>
         <div class="block descript">
             <div class="content">
                 <div class="header">
-                    <h3>The grand tour</h3></div>
-                <div class="body">NASA's Voyager mission took advantage of a once-every-175-year alignment of the outer planets for a grand tour of the solar system. The twin spacecraft revealed details about Jupiter, Saturn, Uranus and Neptune – using each planet's gravity to send them on to the next destination. Voyager set the stage for such ambitious orbiter missions as Galileo to Jupiter and Cassini to Saturn. Today both Voyager spacecraft continue to return valuable science from the far reaches of our solar system.</div>
+                    <h3 id="title" >THE GRAND TOUR</h3></div>
+                <div id="deskr" class="body">NASA's Voyager mission took advantage of a once-every-175-year alignment of the outer planets for a grand tour of the solar system. The twin spacecraft revealed details about Jupiter, Saturn, Uranus and Neptune – using each planet's gravity to send them on to the next destination. Voyager set the stage for such ambitious orbiter missions as Galileo to Jupiter and Cassini to Saturn. Today both Voyager spacecraft continue to return valuable science from the far reaches of our solar system.</div>
             </div>
         </div>
     </div>
