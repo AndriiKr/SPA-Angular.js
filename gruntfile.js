@@ -51,8 +51,9 @@ module.exports = function(grunt) {
             options: {
                 port: 9000,
                 'serve': {
-                    'path': 'E:\\prgm\\oldmen-test\\www'
+                    'path': 'www'
                 },
+                
             }
         }
     });

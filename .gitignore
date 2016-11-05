@@ -10,5 +10,5 @@ config.js
 *.css
 README.md
 .sass-cache
-templates
+img
 www
