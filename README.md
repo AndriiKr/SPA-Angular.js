@@ -1,4 +1,4 @@
-# oldmen-test
+# SPA Angular.js
 Testing project
 
 Run project: git clone>npm i > grunt> grunt serve> localhost:9000
