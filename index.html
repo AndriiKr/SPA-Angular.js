@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="app" ng-controller="AppController">
+<html lang="en" ng-app="app" >
 
 <head>
     <meta charset="utf-8">
@@ -10,31 +10,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.min.js"></script>
 
 </head>
-<body>
+<body ng-controller="AppController">
     <div class="wrapper">
         <div class="block form">
             <p></p>
             <form class="search_form" action="" autocomplete="on">
-                <input ng-model="filter" id="search" name="search" type="text" placeholder="Search...">
+                <input ng-model="search" id="search" name="search" type="text" placeholder="Search...">
                 <input id="search_submit" value="" type="submit">
             </form>
         </div>
         <div class="block list">
             <ul class="list-items">
-                <li  ng:click="setActive(item); posters.title=item.title; posters.description=item.description; posters.image=item.image" ng-repeat="item in posters | limitTo:quantity | orderBy:orderFunction | filter:{title:filter}" ng-class-odd="'blue-type'" ng-class-even="'yellow-type'" ng-class="{active : activeItem === item}">
+                <li ng-click="setTab(item)" ng-repeat="item in posters | limitTo:10 | orderBy:orderFunction | filter:{title:search}" ng-class-odd="'blue-type'" ng-class-even="'yellow-type'" ng-class="{active : isSet(item)}">
                     <a   ng-class-odd="'blue-type'" ng-class-even="'yellow-type'" href="#" ng-bind-html="item.title">
                     </a>
                 </li>
             </ul>
         </div>
         <div class="block poster">
-            <img id="image"  src="resources/images/grand_tour.jpg" ng-src="resources/{{posters.image}}" alt="magazine" class="magazine">
+            <img id="image" src="resources/images/grand_tour.jpg" ng-src="resources/{{tab.image}}" alt="magazine" class="magazine">
         </div>
         <div class="block descript">
             <div class="content">
                 <div class="header">
-                    <h3 id="title" ng-bind-html="posters.title || posters[8].title"></h3></div>
-                <div id="deskr" class="body" ng-bind-html="posters.description || posters[8].description"></div>
+                    <h3 id="title" ng-bind-html="tab.title"></h3></div>
+                <div id="deskr" class="body" ng-bind-html="tab.description"></div>
             </div>
         </div>
     </div>

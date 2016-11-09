@@ -2,11 +2,18 @@
   
   var app = angular.module('app', ['ngSanitize']);
 
-  app.controller('AppController', ['$scope','$log', '$sce', function($scope, $sce, $log) {
-  	$scope.$log = $log;
+  app.controller('AppController', ['$scope', '$sce', function($scope, $sce, $log) {
   	$scope.posters = POSTERS;
-    $scope.quantity = 10;
-    $scope.active = 'active';
+
+    //tabs
+    $scope.tab = POSTERS[8];
+    $scope.setTab = function(item){
+      $scope.tab = item;
+    };
+    $scope.isSet = function(tabName){
+      return $scope.tab === tabName;
+    };
+
     $scope.returnImg = function (){
     }
      $scope.orderFunction = function(value) {
@@ -17,8 +24,6 @@
         return value.title;
     }
    }
-    $scope.activeItem = POSTERS[8];
-    $scope.setActive = function(menuItem) {
-    $scope.activeItem = menuItem
- }
   }]);
+
+ 
