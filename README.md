@@ -1,7 +1,7 @@
 # SPA Angular.js
 Testing project
 
-Run project: git clone>npm i > grunt> grunt serve> localhost:9000
+Run project: git clone>npm i > grunt> grunt serve> localhost:9000!!!!!!
 
 
 Stack
